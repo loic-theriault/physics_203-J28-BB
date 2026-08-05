@@ -6,7 +6,7 @@
   author: ("Richard Rispoli"),
   title: [Physique dans le jeu vidéo],
 )
-
+ 
 #show title: set align(right)
 #show title: set block(below: 1.2em)
 #show title: set text(weight: "bold", size: 1.2em, fill: rgb("#406372"))
@@ -45,7 +45,7 @@
 #include "session04.typ"
 
 #pagebreak()
-
+ 
 #include "session05.typ"
 
 #pagebreak()

@@ -162,15 +162,15 @@ function resolveBallCollision(ballA, ballB) {
     const e = simParams.restitution; 
 
     // 1. Normale & Vitesse Relative
-    // const normal = new THREE.Vector3().subVectors(ballA.position, ballB.position).normalize();
-    // const relativeVel = new THREE.Vector3().subVectors(velA, velB);
-    // const vRel = relativeVel.dot(normal);
+    const normal = new THREE.Vector3().subVectors(ballA.position, ballB.position).normalize();
+    const relativeVel = new THREE.Vector3().subVectors(velA, velB);
+    const vRel = relativeVel.dot(normal);
 
     if (vRel > 0) return;
 
     // 2. Impulsion (Formule du cours)
     // const reducedMass = ??;
-    // const j =??;
+    // const j = ??;
 
     // 3. Application
     // const impulse = ??;
