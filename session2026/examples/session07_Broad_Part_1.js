@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'jsm/controls/OrbitControls.js';
+import { RGBELoader } from 'jsm/loaders/RGBELoader.js';
 import { GUI } from 'https://unpkg.com/lil-gui@0.20.0/dist/lil-gui.esm.min.js';
 
 // --- Configuration ---
@@ -8,7 +9,9 @@ const BALL_RADIUS = 0.2;
 const CELL_SIZE = BALL_RADIUS * 4; // Taille de cellule ≈ 2× diamètre
 
 let camera, scene, renderer;
-let balls = [];
+let ballData = []; // { position: Vector3, velocity: Vector3, mass: number }
+let instancedMesh;
+let dummy = new THREE.Object3D(); // Pour mettre à jour les matrices d'instance
 let grid;
 let fpsDisplay = { value: 0, tests: 0 };
 
@@ -107,6 +110,13 @@ function init() {
     scene.add(light);
     scene.add(new THREE.AmbientLight(0x404060));
 
+    // Environment map (HDR)
+    new RGBELoader().load('textures/space.hdr', (texture) => {
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        scene.environment = texture;
+        scene.background = texture;
+    });
+
     // 2. Cube conteneur (wireframe)
     const cubeGeo = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
     const wireframe = new THREE.LineSegments(
@@ -115,10 +125,19 @@ function init() {
     );
     scene.add(wireframe);
 
-    // 3. Grille spatiale
+    // 3. InstancedMesh pour les billes (optimisation)
+    const ballGeo = new THREE.SphereGeometry(BALL_RADIUS, 16, 16);
+    const ballMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
+    instancedMesh = new THREE.InstancedMesh(ballGeo, ballMat, 10000);
+    instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    instancedMesh.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(10000 * 3), 3);
+    instancedMesh.count = 0;
+    scene.add(instancedMesh);
+
+    // 4. Grille spatiale
     grid = new SpatialGrid(CELL_SIZE);
 
-    // 4. Simulation
+    // 5. Simulation
     initSimulation();
 
     // 5. GUI
@@ -134,7 +153,7 @@ function setupGUI() {
     const gui = new GUI();
 
     const folderSim = gui.addFolder('Simulation');
-    folderSim.add(simParams, 'nbBalls', 10, 3000, 10).name('Nombre de billes').onChange(initSimulation);
+    folderSim.add(simParams, 'nbBalls', 10, 10000, 10).name('Nombre de billes').onChange(initSimulation);
     folderSim.add(simParams, 'useBroadPhase').name('Broad Phase ON/OFF');
     folderSim.add(simParams, 'restitution', 0.0, 1.0, 0.05).name('Restitution (e)');
     folderSim.add(simParams, 'timeScale', 0.0, 2.0).name('⏱️ Vitesse Temps');
@@ -147,31 +166,25 @@ function setupGUI() {
 }
 
 function initSimulation() {
-    // Nettoyage
-    balls.forEach(b => scene.remove(b));
-    balls = [];
+    ballData = [];
+    instancedMesh.count = simParams.nbBalls;
 
     for (let i = 0; i < simParams.nbBalls; i++) {
-        const mesh = new THREE.Mesh(
-            new THREE.SphereGeometry(BALL_RADIUS, 16, 16),
-            new THREE.MeshStandardMaterial({ color: Math.random() * 0xffffff })
-        );
-        mesh.position.set(
+        const position = new THREE.Vector3(
             (Math.random() - 0.5) * (CUBE_SIZE - 1),
             (Math.random() - 0.5) * (CUBE_SIZE - 1),
             (Math.random() - 0.5) * (CUBE_SIZE - 1)
         );
-        mesh.userData = {
-            velocity: new THREE.Vector3(
-                (Math.random() - 0.5) * 6,
-                (Math.random() - 0.5) * 6,
-                (Math.random() - 0.5) * 6
-            ),
-            mass: 1
-        };
-        balls.push(mesh);
-        scene.add(mesh);
+        const velocity = new THREE.Vector3(
+            (Math.random() - 0.5) * 6,
+            (Math.random() - 0.5) * 6,
+            (Math.random() - 0.5) * 6
+        );
+        const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+        ballData.push({ position, velocity, mass: 1, id: i, color });
     }
+
+    updateInstanceMatrices();
 }
 
 // ============================================================
@@ -183,27 +196,27 @@ function updatePhysics(dt) {
     let testCount = 0;
 
     // 1. Intégration + murs
-    for (let ball of balls) {
-        ball.position.addScaledVector(ball.userData.velocity, dt);
+    for (let ball of ballData) {
+        ball.position.addScaledVector(ball.velocity, dt);
 
         // Rebond sur les 6 faces du cube
         const r = BALL_RADIUS;
-        if (ball.position.x > half - r) { ball.position.x = half - r; ball.userData.velocity.x *= -simParams.restitution; }
-        if (ball.position.x < -half + r) { ball.position.x = -half + r; ball.userData.velocity.x *= -simParams.restitution; }
-        if (ball.position.y > half - r) { ball.position.y = half - r; ball.userData.velocity.y *= -simParams.restitution; }
-        if (ball.position.y < -half + r) { ball.position.y = -half + r; ball.userData.velocity.y *= -simParams.restitution; }
-        if (ball.position.z > half - r) { ball.position.z = half - r; ball.userData.velocity.z *= -simParams.restitution; }
-        if (ball.position.z < -half + r) { ball.position.z = -half + r; ball.userData.velocity.z *= -simParams.restitution; }
+        if (ball.position.x > half - r) { ball.position.x = half - r; ball.velocity.x *= -simParams.restitution; }
+        if (ball.position.x < -half + r) { ball.position.x = -half + r; ball.velocity.x *= -simParams.restitution; }
+        if (ball.position.y > half - r) { ball.position.y = half - r; ball.velocity.y *= -simParams.restitution; }
+        if (ball.position.y < -half + r) { ball.position.y = -half + r; ball.velocity.y *= -simParams.restitution; }
+        if (ball.position.z > half - r) { ball.position.z = half - r; ball.velocity.z *= -simParams.restitution; }
+        if (ball.position.z < -half + r) { ball.position.z = -half + r; ball.velocity.z *= -simParams.restitution; }
     }
 
     // 2. Collisions entre billes
     if (simParams.useBroadPhase) {
         // --- BROAD PHASE ---
         grid.clear();
-        for (let ball of balls) grid.insert(ball);
+        for (let ball of ballData) grid.insert(ball);
 
-        for (let i = 0; i < balls.length; i++) {
-            const ballA = balls[i];
+        for (let i = 0; i < ballData.length; i++) {
+            const ballA = ballData[i];
             const candidates = grid.getNeighbors(ballA.position);
 
             for (let ballB of candidates) {
@@ -221,10 +234,10 @@ function updatePhysics(dt) {
         }
     } else {
         // --- BRUTE FORCE O(N²) ---
-        for (let i = 0; i < balls.length; i++) {
-            for (let j = i + 1; j < balls.length; j++) {
+        for (let i = 0; i < ballData.length; i++) {
+            for (let j = i + 1; j < ballData.length; j++) {
                 testCount++;
-                resolveCollision(balls[i], balls[j]);
+                resolveCollision(ballData[i], ballData[j]);
             }
         }
     }
@@ -236,10 +249,10 @@ function resolveCollision(ballA, ballB) {
     const dist = ballA.position.distanceTo(ballB.position);
     if (dist > BALL_RADIUS * 2 || dist === 0) return;
 
-    const velA = ballA.userData.velocity;
-    const velB = ballB.userData.velocity;
-    const mA = ballA.userData.mass;
-    const mB = ballB.userData.mass;
+    const velA = ballA.velocity;
+    const velB = ballB.velocity;
+    const mA = ballA.mass;
+    const mB = ballB.mass;
     const e = simParams.restitution;
 
     // Normale de collision
@@ -272,9 +285,21 @@ function resolveCollision(ballA, ballB) {
 let frameCount = 0;
 let lastFpsTime = performance.now();
 
+function updateInstanceMatrices() {
+    for (let i = 0; i < ballData.length; i++) {
+        dummy.position.copy(ballData[i].position);
+        dummy.updateMatrix();
+        instancedMesh.setMatrixAt(i, dummy.matrix);
+        instancedMesh.setColorAt(i, ballData[i].color);
+    }
+    instancedMesh.instanceMatrix.needsUpdate = true;
+    instancedMesh.instanceColor.needsUpdate = true;
+}
+
 function animate() {
     const dt = 0.016 * simParams.timeScale;
     updatePhysics(dt);
+    updateInstanceMatrices();
     renderer.render(scene, camera);
 
     // Calcul FPS (mis à jour 2x par seconde)
