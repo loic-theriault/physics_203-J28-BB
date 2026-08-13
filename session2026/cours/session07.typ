@@ -388,6 +388,6 @@ On présente ici les trois structures les plus utilisées en jeu vidéo.
   - Faire attention aux *doublons* : le code fourni utilise `ballB.id <= ballA.id` pour éviter de tester chaque paire deux fois. Ne pas retirer cette garde.
 ]
 
-#definition-box(title: "Bonus (+2 pts)")[
+#definition-box(title: "Bonus")[
   Ajouter un *Octree* comme troisième option dans la GUI (en plus de Brute Force et Grille). Comparer les performances lorsque les billes sont concentrées dans un coin du cube (distribution non uniforme). L'Octree devrait mieux gérer cette situation car il subdivise les zones denses.
 ]
