@@ -1,0 +1,50 @@
+<svg width="600" height="280" viewBox="0 0 600 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Door/wrench torque illustration -->
+
+  <!-- Hinge (pivot) -->
+  <circle cx="80" cy="140" r="12" fill="#444" stroke="black" stroke-width="2"/>
+  <circle cx="80" cy="140" r="4" fill="#222"/>
+
+  <!-- Door bar -->
+  <rect x="80" y="130" width="340" height="20" fill="#8B7355" stroke="black" stroke-width="2"/>
+
+  <!-- Lever arm r vector -->
+  <line x1="80" y1="140" x2="340" y2="140" stroke="#2266AA" stroke-width="3" marker-end="url(#arrowBlue)"/>
+
+  <!-- Force F applied at end -->
+  <line x1="340" y1="140" x2="340" y2="60" stroke="#D44" stroke-width="3" marker-end="url(#arrowRed)"/>
+
+  <!-- Label r -->
+  <text x="190" y="165" font-family="serif" font-size="20" fill="#2266AA" font-style="italic">r</text>
+
+  <!-- Label F -->
+  <text x="355" y="100" font-family="serif" font-size="20" fill="#D44" font-style="italic">F</text>
+
+  <!-- Pivot label -->
+  <text x="55" y="175" font-family="serif" font-size="16" fill="#444">pivot</text>
+
+  <!-- tau = r x F result (curved arrow) -->
+  <path d="M 200 200 A 60 60 0 0 1 320 200" stroke="#2A8A2A" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="240" y="240" font-family="serif" font-size="18" fill="#2A8A2A" font-style="italic">τ = r × F</text>
+
+  <!-- Second case: force at middle (less torque) -->
+  <rect x="80" y="50" width="340" height="14" fill="#8B7355" stroke="black" stroke-width="2" opacity="0.5"/>
+  <circle cx="80" cy="57" r="10" fill="#444" stroke="black" stroke-width="2" opacity="0.5"/>
+  <line x1="80" y1="57" x2="200" y2="57" stroke="#2266AA" stroke-width="2" marker-end="url(#arrowBlue)" opacity="0.5"/>
+  <line x1="200" y1="57" x2="200" y2="10" stroke="#D44" stroke-width="2" marker-end="url(#arrowRed)" opacity="0.5"/>
+  <text x="135" y="48" font-family="serif" font-size="14" fill="#2266AA" font-style="italic" opacity="0.7">r/2</text>
+  <text x="210" y="30" font-family="serif" font-size="14" fill="#D44" font-style="italic" opacity="0.7">F (même force, τ/2)</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2266AA"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#D44"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+  </defs>
+</svg>

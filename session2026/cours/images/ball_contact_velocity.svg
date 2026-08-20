@@ -1,0 +1,60 @@
+<svg width="600" height="350" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Ground line -->
+  <line x1="50" y1="280" x2="550" y2="280" stroke="#333" stroke-width="3"/>
+  <path d="M 50 280 L 60 275 M 50 280 L 60 285 M 70 280 L 80 275 M 70 280 L 80 285 M 90 280 L 100 275 M 90 280 L 100 285 M 110 280 L 120 275 M 110 280 L 120 285 M 130 280 L 140 275 M 130 280 L 140 285 M 150 280 L 160 275 M 150 280 L 160 285 M 170 280 L 180 275 M 170 280 L 180 285 M 190 280 L 200 275 M 190 280 L 200 285 M 210 280 L 220 275 M 210 280 L 220 285 M 230 280 L 240 275 M 230 280 L 240 285 M 250 280 L 260 275 M 250 280 L 260 285 M 270 280 L 280 275 M 270 280 L 280 285 M 290 280 L 300 275 M 290 280 L 300 285 M 310 280 L 320 275 M 310 280 L 320 285 M 330 280 L 340 275 M 330 280 L 340 285 M 350 280 L 360 275 M 350 280 L 360 285 M 370 280 L 380 275 M 370 280 L 380 285 M 390 280 L 400 275 M 390 280 L 400 285 M 410 280 L 420 275 M 410 280 L 420 285 M 430 280 L 440 275 M 430 280 L 440 285 M 450 280 L 460 275 M 450 280 L 460 285 M 470 280 L 480 275 M 470 280 L 480 285 M 490 280 L 500 275 M 490 280 L 500 285 M 510 280 L 520 275 M 510 280 L 520 285 M 530 280 L 540 275 M 530 280 L 540 285" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Ball -->
+  <circle cx="300" cy="230" r="50" fill="#737070" stroke="black" stroke-width="2"/>
+  <!-- Texture lines to show rotation -->
+  <path d="M 300 180 L 300 280" stroke="#555" stroke-width="1.5"/>
+  <path d="M 250 230 L 350 230" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Center of mass G -->
+  <circle cx="300" cy="230" r="4" fill="#2266AA"/>
+  <text x="310" y="225" font-family="serif" font-size="16" fill="#2266AA" font-style="italic">G</text>
+
+  <!-- v_G velocity vector (blue, horizontal) -->
+  <line x1="300" y1="230" x2="420" y2="230" stroke="#2266AA" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="360" y="220" font-family="serif" font-size="18" fill="#2266AA" font-style="italic">v_G</text>
+
+  <!-- r vector from G to contact point (down) -->
+  <line x1="300" y1="230" x2="300" y2="280" stroke="#888" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowGray)"/>
+  <text x="275" y="260" font-family="serif" font-size="16" fill="#888" font-style="italic">r</text>
+
+  <!-- Contact point P -->
+  <circle cx="300" cy="280" r="4" fill="#D44"/>
+  <text x="280" y="305" font-family="serif" font-size="16" fill="#D44" font-style="italic">P</text>
+
+  <!-- omega (curved arrow around center) -->
+  <path d="M 300 190 A 40 40 0 0 1 340 230" stroke="#2A8A2A" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="345" y="200" font-family="serif" font-size="18" fill="#2A8A2A" font-style="italic">ω</text>
+
+  <!-- v_rot = omega x r at contact point (green, pointing left = backward) -->
+  <line x1="300" y1="280" x2="200" y2="280" stroke="#2A8A2A" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="220" y="300" font-family="serif" font-size="16" fill="#2A8A2A" font-style="italic">v_rot = ω × r</text>
+
+  <!-- v_P = v_G + v_rot (resulting contact velocity, red) -->
+  <line x1="300" y1="320" x2="380" y2="320" stroke="#D44" stroke-width="3" marker-end="url(#arrowRed)"/>
+  <text x="330" y="345" font-family="serif" font-size="16" fill="#D44" font-style="italic">v_P (glissement)</text>
+
+  <!-- Equation -->
+  <text x="150" y="50" font-family="serif" font-size="20" fill="#333">v_P = v_G + (ω × r)</text>
+  <text x="150" y="80" font-family="serif" font-size="16" fill="#666">Si v_P ≠ 0 : la boule glisse (friction cinétique)</text>
+  <text x="150" y="105" font-family="serif" font-size="16" fill="#666">Si v_P = 0 : la boule roule sans glisser</text>
+
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2266AA"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#D44"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,39 @@
+<svg width="700" height="200" viewBox="0 0 700 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Ring -->
+  <circle cx="100" cy="90" r="50" fill="none" stroke="#333" stroke-width="8"/>
+  <circle cx="100" cy="90" r="3" fill="#333"/>
+  <text x="100" y="170" text-anchor="middle" font-family="serif" font-size="14" fill="#333">Anneau mince</text>
+  <text x="100" y="190" text-anchor="middle" font-family="serif" font-size="16" fill="#2266AA" font-style="italic">I = mR²</text>
+
+  <!-- Solid disk -->
+  <circle cx="280" cy="90" r="50" fill="#8B7355" stroke="#333" stroke-width="2"/>
+  <circle cx="280" cy="90" r="3" fill="#333"/>
+  <text x="280" y="170" text-anchor="middle" font-family="serif" font-size="14" fill="#333">Disque plein</text>
+  <text x="280" y="190" text-anchor="middle" font-family="serif" font-size="16" fill="#2266AA" font-style="italic">I = ½mR²</text>
+
+  <!-- Solid sphere -->
+  <circle cx="460" cy="90" r="50" fill="#737070" stroke="#333" stroke-width="2"/>
+  <ellipse cx="460" cy="90" rx="50" ry="15" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <circle cx="460" cy="90" r="3" fill="#333"/>
+  <text x="460" y="170" text-anchor="middle" font-family="serif" font-size="14" fill="#333">Sphère pleine</text>
+  <text x="460" y="190" text-anchor="middle" font-family="serif" font-size="16" fill="#2266AA" font-style="italic">I = ⅖mR²</text>
+
+  <!-- Rectangle -->
+  <rect x="580" y="50" width="80" height="80" fill="#8B7355" stroke="#333" stroke-width="2"/>
+  <circle cx="620" cy="90" r="3" fill="#333"/>
+  <text x="620" y="170" text-anchor="middle" font-family="serif" font-size="14" fill="#333">Rectangle</text>
+  <text x="620" y="190" text-anchor="middle" font-family="serif" font-size="14" fill="#2266AA" font-style="italic">I = ¹⁄₁₂ m(w²+h²)</text>
+
+  <!-- Rotation arrows on each -->
+  <path d="M 100 30 A 60 60 0 0 1 160 90" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 280 30 A 60 60 0 0 1 340 90" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 460 30 A 60 60 0 0 1 520 90" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 620 30 A 60 60 0 0 1 680 90" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,81 @@
+<svg width="750" height="280" viewBox="0 0 750 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Ground -->
+  <line x1="30" y1="220" x2="720" y2="220" stroke="#333" stroke-width="3"/>
+
+  <!-- Phase 1: Pure sliding (v_G >> v_rot, v_P large) -->
+  <text x="120" y="30" text-anchor="middle" font-family="serif" font-size="16" fill="#333" font-weight="bold">Phase 1 : Glissement pur</text>
+
+  <circle cx="120" cy="190" r="30" fill="#737070" stroke="black" stroke-width="2"/>
+  <path d="M 120 160 L 120 220 M 90 190 L 150 190" stroke="#555" stroke-width="1.5"/>
+
+  <!-- v_G (big blue arrow) -->
+  <line x1="120" y1="190" x2="220" y2="190" stroke="#2266AA" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="170" y="180" font-family="serif" font-size="16" fill="#2266AA" font-style="italic">v_G (grand)</text>
+
+  <!-- omega small -->
+  <path d="M 120 165 A 25 25 0 0 1 145 190" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="150" y="155" font-family="serif" font-size="14" fill="#2A8A2A" font-style="italic">ω (petit)</text>
+
+  <!-- v_P at contact (big red, forward) -->
+  <line x1="120" y1="250" x2="200" y2="250" stroke="#D44" stroke-width="3" marker-end="url(#arrowRed)"/>
+  <text x="145" y="270" font-family="serif" font-size="14" fill="#D44" font-style="italic">v_P ≠ 0</text>
+
+  <!-- Friction arrow (backward, big) -->
+  <line x1="120" y1="220" x2="60" y2="220" stroke="#D44" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrowRed)"/>
+  <text x="55" y="240" font-family="serif" font-size="14" fill="#D44">friction</text>
+
+  <!-- Phase 2: Transition (v_P ≈ 0) -->
+  <line x1="270" y1="10" x2="270" y2="270" stroke="#999" stroke-width="1" stroke-dasharray="5 5"/>
+
+  <text x="400" y="30" text-anchor="middle" font-family="serif" font-size="16" fill="#333" font-weight="bold">Phase 2 : Transition (v_P ≈ 0)</text>
+
+  <circle cx="400" cy="190" r="30" fill="#737070" stroke="black" stroke-width="2"/>
+  <path d="M 400 160 L 400 220 M 370 190 L 430 190" stroke="#555" stroke-width="1.5"/>
+
+  <!-- v_G (medium blue) -->
+  <line x1="400" y1="190" x2="470" y2="190" stroke="#2266AA" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="430" y="180" font-family="serif" font-size="16" fill="#2266AA" font-style="italic">v_G</text>
+
+  <!-- omega medium -->
+  <path d="M 400 165 A 25 25 0 0 1 425 190" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="430" y="155" font-family="serif" font-size="14" fill="#2A8A2A" font-style="italic">ω</text>
+
+  <!-- v_P ≈ 0 -->
+  <circle cx="400" cy="250" r="5" fill="#D44"/>
+  <text x="380" y="270" font-family="serif" font-size="14" fill="#D44" font-style="italic">v_P ≈ 0</text>
+
+  <text x="400" y="110" text-anchor="middle" font-family="serif" font-size="14" fill="#666">v_G = ωR (roulement pur)</text>
+
+  <!-- Phase 3: Pure rolling -->
+  <line x1="540" y1="10" x2="540" y2="270" stroke="#999" stroke-width="1" stroke-dasharray="5 5"/>
+
+  <text x="650" y="30" text-anchor="middle" font-family="serif" font-size="16" fill="#333" font-weight="bold">Phase 3 : Roulement pur</text>
+
+  <circle cx="650" cy="190" r="30" fill="#737070" stroke="black" stroke-width="2"/>
+  <path d="M 650 160 L 650 220 M 620 190 L 680 190" stroke="#555" stroke-width="1.5"/>
+
+  <!-- v_G (small, decreasing) -->
+  <line x1="650" y1="190" x2="700" y2="190" stroke="#2266AA" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="675" y="180" font-family="serif" font-size="14" fill="#2266AA" font-style="italic">v_G (décroît)</text>
+
+  <!-- omega matched -->
+  <path d="M 650 165 A 25 25 0 0 1 675 190" stroke="#2A8A2A" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="680" y="155" font-family="serif" font-size="14" fill="#2A8A2A" font-style="italic">ω = v_G/R</text>
+
+  <!-- Rolling resistance (small) -->
+  <line x1="650" y1="220" x2="610" y2="220" stroke="#D44" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrowRed)"/>
+  <text x="580" y="240" font-family="serif" font-size="12" fill="#D44">résistance roulement</text>
+
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2266AA"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#D44"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+  </defs>
+</svg>
