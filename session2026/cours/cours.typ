@@ -70,6 +70,10 @@
 
 #pagebreak()
 
+#include "session10b_quiz.typ"
+
+#pagebreak()
+
 #include "session11.typ"
 
 #pagebreak()
