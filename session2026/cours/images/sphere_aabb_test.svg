@@ -1,0 +1,51 @@
+<svg width="560" height="300" viewBox="0 0 560 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sphere vs AABB: clamping test -->
+
+  <!-- AABB -->
+  <rect x="180" y="80" width="200" height="120" fill="#E8A838" fill-opacity="0.12" stroke="#E8A838" stroke-width="2.5"/>
+  <text x="200" y="100" font-family="serif" font-size="14" fill="#B07820">AABB</text>
+
+  <!-- AABB min/max labels -->
+  <text x="170" y="210" font-family="serif" font-size="12" fill="#B07820" font-style="italic">min</text>
+  <text x="370" y="75" font-family="serif" font-size="12" fill="#B07820" font-style="italic">max</text>
+
+  <!-- Sphere center (outside, above-left) -->
+  <circle cx="120" cy="50" r="3" fill="#2266AA"/>
+  <text x="95" y="45" font-family="serif" font-size="14" fill="#2266AA" font-style="italic">center</text>
+
+  <!-- Sphere -->
+  <circle cx="120" cy="50" r="45" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2.5"/>
+  <text x="80" y="30" font-family="serif" font-size="13" fill="#2266AA">Sphère (r)</text>
+
+  <!-- Clamped point on AABB (closest point) -->
+  <circle cx="180" cy="80" r="5" fill="#D44"/>
+  <text x="190" y="75" font-family="serif" font-size="13" fill="#D44" font-weight="bold">closest</text>
+  <text x="190" y="92" font-family="serif" font-size="11" fill="#D44">(clampé)</text>
+
+  <!-- Distance vector from center to closest -->
+  <line x1="120" y1="50" x2="180" y2="80" stroke="#2A8A2A" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrowGreen)"/>
+  <text x="130" y="75" font-family="serif" font-size="13" fill="#2A8A2A">d = |center - closest|</text>
+
+  <!-- Clamp arrows showing how closest is computed -->
+  <line x1="120" y1="50" x2="120" y2="80" stroke="#888" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <line x1="120" y1="80" x2="180" y2="80" stroke="#888" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <text x="100" y="70" font-family="serif" font-size="11" fill="#888">clamp x</text>
+  <text x="135" y="75" font-family="serif" font-size="11" fill="#888">clamp y</text>
+
+  <!-- Result equation -->
+  <text x="280" y="240" text-anchor="middle" font-family="serif" font-size="16" fill="#333">Collision si d &lt; r</text>
+  <text x="280" y="265" text-anchor="middle" font-family="serif" font-size="14" fill="#666">closest = clamp(center, min, max) sur chaque axe</text>
+
+  <!-- Code snippet -->
+  <rect x="30" y="220" width="240" height="70" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="240" font-family="monospace" font-size="11" fill="#333">const cx = clamp(s.center.x, min.x, max.x);</text>
+  <text x="40" y="255" font-family="monospace" font-size="11" fill="#333">const cy = clamp(s.center.y, min.y, max.y);</text>
+  <text x="40" y="270" font-family="monospace" font-size="11" fill="#333">const d = dist(s.center, {cx, cy});</text>
+  <text x="40" y="285" font-family="monospace" font-size="11" fill="#333">return d &lt; s.radius;</text>
+
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,40 @@
+<svg width="620" height="320" viewBox="0 0 620 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minkowski Difference: A, B, and A-B with origin -->
+
+  <!-- Shape A (left) -->
+  <polygon points="40,60 130,50 160,120 100,170 30,130" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="2.5"/>
+  <text x="75" y="115" font-family="serif" font-size="20" fill="#2266AA" font-weight="bold">A</text>
+
+  <!-- Shape B (middle) -->
+  <polygon points="230,80 310,70 340,140 280,180 220,150" fill="#D44" fill-opacity="0.2" stroke="#D44" stroke-width="2.5"/>
+  <text x="270" y="130" font-family="serif" font-size="20" fill="#A02020" font-weight="bold">B</text>
+
+  <!-- Arrow A-B -->
+  <text x="180" y="40" font-family="serif" font-size="16" fill="#333">Minkowski : A ⊖ B = {a - b | a ∈ A, b ∈ B}</text>
+
+  <!-- Minkowski difference (right) — contains origin if collision -->
+  <polygon points="420,50 560,40 590,150 530,210 440,200 400,120" fill="#2A8A2A" fill-opacity="0.12" stroke="#2A8A2A" stroke-width="2.5"/>
+  <text x="470" y="120" font-family="serif" font-size="16" fill="#2A8A2A" font-weight="bold">A ⊖ B</text>
+
+  <!-- Origin inside Minkowski difference -->
+  <circle cx="490" cy="130" r="5" fill="#D44" stroke="black" stroke-width="1.5"/>
+  <text x="495" y="125" font-family="serif" font-size="14" fill="#D44" font-weight="bold">(0,0)</text>
+
+  <!-- Arrow showing origin is inside -->
+  <text x="440" y="240" font-family="serif" font-size="15" fill="#2A8A2A" font-weight="bold">Origine ∈ A⊖B → collision !</text>
+  <text x="440" y="260" font-family="serif" font-size="13" fill="#666">(si pas de collision, l'origine est à l'extérieur)</text>
+
+  <!-- Arrows from A and B to A-B -->
+  <path d="M 170 110 Q 280 20 420 80" stroke="#888" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#arrowGray)"/>
+  <path d="M 340 120 Q 380 60 420 90" stroke="#888" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#arrowGray)"/>
+
+  <!-- Bottom note -->
+  <rect x="30" y="280" width="560" height="30" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="310" y="300" text-anchor="middle" font-family="serif" font-size="14" fill="#333">GJK ne construit pas A⊖B explicitement — il échantillonne avec la fonction de support.</text>
+
+  <defs>
+    <marker id="arrowGray" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

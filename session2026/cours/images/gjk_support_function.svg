@@ -1,0 +1,53 @@
+<svg width="580" height="300" viewBox="0 0 580 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- GJK Support Function: finding the extremal point in a direction -->
+
+  <!-- Shape (convex polygon) -->
+  <polygon points="120,80 280,60 340,160 260,240 100,200 60,130" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2.5"/>
+  <text x="170" y="150" font-family="serif" font-size="20" fill="#2266AA" font-weight="bold">A</text>
+
+  <!-- Direction d (arrow from center-ish) -->
+  <line x1="200" y1="150" x2="380" y2="80" stroke="#2A8A2A" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="350" y="70" font-family="serif" font-size="18" fill="#2A8A2A" font-style="italic" font-weight="bold">d</text>
+
+  <!-- Support point (extremal in direction d) -->
+  <circle cx="280" cy="60" r="6" fill="#D44" stroke="black" stroke-width="2"/>
+  <text x="290" y="55" font-family="serif" font-size="15" fill="#D44" font-weight="bold">S_A(d)</text>
+
+  <!-- Dashed lines from other vertices to show they're less extreme -->
+  <line x1="120" y1="80" x2="200" y2="150" stroke="#888" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+  <line x1="340" y1="160" x2="200" y2="150" stroke="#888" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+  <line x1="260" y1="240" x2="200" y2="150" stroke="#888" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+
+  <!-- Projection lines showing dot product -->
+  <line x1="280" y1="60" x2="380" y2="80" stroke="#D44" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+
+  <!-- Right side: support for different shapes -->
+  <rect x="420" y="40" width="150" height="240" rx="5" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="495" y="60" text-anchor="middle" font-family="serif" font-size="14" fill="#333" font-weight="bold">Support par forme</text>
+
+  <!-- Sphere -->
+  <circle cx="445" cy="100" r="18" fill="none" stroke="#4A90D9" stroke-width="2"/>
+  <line x1="445" y1="100" x2="475" y2="82" stroke="#2A8A2A" stroke-width="2" marker-end="url(#arrowGreenSmall)"/>
+  <circle cx="463" cy="82" r="3" fill="#D44"/>
+  <text x="490" y="95" font-family="monospace" font-size="10" fill="#333">Sphère:</text>
+  <text x="490" y="108" font-family="monospace" font-size="10" fill="#333">c + r·d̂</text>
+
+  <!-- Box -->
+  <rect x="430" y="140" width="40" height="35" fill="none" stroke="#4A90D9" stroke-width="2"/>
+  <line x1="450" y1="157" x2="478" y2="145" stroke="#2A8A2A" stroke-width="2" marker-end="url(#arrowGreenSmall)"/>
+  <circle cx="470" cy="140" r="3" fill="#D44"/>
+  <text x="490" y="155" font-family="monospace" font-size="10" fill="#333">Cube:</text>
+  <text x="490" y="168" font-family="monospace" font-size="10" fill="#333">coin(sign(d))</text>
+
+  <!-- Formula at bottom -->
+  <text x="200" y="280" text-anchor="middle" font-family="serif" font-size="15" fill="#333" font-weight="bold">S_A(d) = point de A qui maximise (P · d)</text>
+
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+    <marker id="arrowGreenSmall" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto">
+      <path d="M0,0 L0,5 L6,2.5 z" fill="#2A8A2A"/>
+    </marker>
+  </defs>
+</svg>

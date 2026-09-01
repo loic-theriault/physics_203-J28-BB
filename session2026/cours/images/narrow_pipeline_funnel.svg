@@ -1,0 +1,32 @@
+<svg width="620" height="340" viewBox="0 0 620 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Funnel: Broad -> Narrow -> Response -->
+
+  <!-- Broad Phase (top, wide) -->
+  <path d="M 40 40 L 580 40 L 480 120 L 140 120 Z" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2.5"/>
+  <text x="310" y="70" text-anchor="middle" font-family="serif" font-size="18" fill="#2A6AB0" font-weight="bold">Broad Phase</text>
+  <text x="310" y="95" text-anchor="middle" font-family="serif" font-size="14" fill="#444">AABB / Grille / SAP — "Qui pourrait coller ?"</text>
+  <text x="310" y="112" text-anchor="middle" font-family="serif" font-size="13" fill="#666">~500 000 paires → ~2 000 candidates</text>
+
+  <!-- Arrow down -->
+  <line x1="310" y1="125" x2="310" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrowDark)"/>
+
+  <!-- Narrow Phase (middle) -->
+  <path d="M 140 155 L 480 155 L 420 235 L 200 235 Z" fill="#E8A838" fill-opacity="0.15" stroke="#E8A838" stroke-width="2.5"/>
+  <text x="310" y="185" text-anchor="middle" font-family="serif" font-size="18" fill="#B07820" font-weight="bold">Narrow Phase</text>
+  <text x="310" y="208" text-anchor="middle" font-family="serif" font-size="14" fill="#444">SAT / GJK / EPA — "Se touchent-ils vraiment ?"</text>
+  <text x="310" y="225" text-anchor="middle" font-family="serif" font-size="13" fill="#666">~2 000 candidates → ~200 confirmées</text>
+
+  <!-- Arrow down -->
+  <line x1="310" y1="240" x2="310" y2="265" stroke="#333" stroke-width="2" marker-end="url(#arrowDark)"/>
+
+  <!-- Response (bottom, narrow) -->
+  <rect x="200" y="270" width="220" height="55" rx="6" fill="#D44" fill-opacity="0.12" stroke="#D44" stroke-width="2.5"/>
+  <text x="310" y="295" text-anchor="middle" font-family="serif" font-size="18" fill="#A02020" font-weight="bold">Response</text>
+  <text x="310" y="315" text-anchor="middle" font-family="serif" font-size="14" fill="#444">Impulsion + correction — "Que faire ?"</text>
+
+  <defs>
+    <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

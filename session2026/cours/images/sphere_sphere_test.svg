@@ -1,0 +1,61 @@
+<svg width="560" height="280" viewBox="0 0 560 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sphere vs Sphere collision test -->
+
+  <!-- Case 1: Collision -->
+  <text x="140" y="25" text-anchor="middle" font-family="serif" font-size="16" fill="#2A8A2A" font-weight="bold">Collision ✓</text>
+
+  <!-- Sphere A -->
+  <circle cx="100" cy="100" r="45" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="2.5"/>
+  <circle cx="100" cy="100" r="3" fill="#2266AA"/>
+  <text x="85" y="95" font-family="serif" font-size="14" fill="#2266AA" font-style="italic">c_A</text>
+  <line x1="100" y1="100" x2="145" y2="100" stroke="#2266AA" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="120" y="92" font-family="serif" font-size="12" fill="#2266AA" font-style="italic">r_A</text>
+
+  <!-- Sphere B -->
+  <circle cx="160" cy="100" r="35" fill="#D44" fill-opacity="0.2" stroke="#D44" stroke-width="2.5"/>
+  <circle cx="160" cy="100" r="3" fill="#A02020"/>
+  <text x="165" y="95" font-family="serif" font-size="14" fill="#A02020" font-style="italic">c_B</text>
+  <line x1="160" y1="100" x2="195" y2="100" stroke="#A02020" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="175" y="92" font-family="serif" font-size="12" fill="#A02020" font-style="italic">r_B</text>
+
+  <!-- Distance line -->
+  <line x1="100" y1="100" x2="160" y2="100" stroke="#2A8A2A" stroke-width="2.5" marker-end="url(#arrowGreen)" marker-start="url(#arrowGreenStart)"/>
+  <text x="115" y="125" font-family="serif" font-size="13" fill="#2A8A2A">|c_A - c_B| &lt; r_A + r_B</text>
+
+  <!-- Case 2: No collision -->
+  <text x="420" y="25" text-anchor="middle" font-family="serif" font-size="16" fill="#D44" font-weight="bold">Pas de collision ✗</text>
+
+  <circle cx="350" cy="100" r="40" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="2.5"/>
+  <circle cx="350" cy="100" r="3" fill="#2266AA"/>
+  <text x="335" y="95" font-family="serif" font-size="14" fill="#2266AA" font-style="italic">c_A</text>
+
+  <circle cx="470" cy="100" r="35" fill="#D44" fill-opacity="0.2" stroke="#D44" stroke-width="2.5"/>
+  <circle cx="470" cy="100" r="3" fill="#A02020"/>
+  <text x="475" y="95" font-family="serif" font-size="14" fill="#A02020" font-style="italic">c_B</text>
+
+  <line x1="350" y1="100" x2="470" y2="100" stroke="#D44" stroke-width="2.5" marker-end="url(#arrowRed)" marker-start="url(#arrowRedStart)"/>
+  <text x="370" y="125" font-family="serif" font-size="13" fill="#D44">|c_A - c_B| &gt; r_A + r_B</text>
+
+  <!-- Code at bottom -->
+  <rect x="30" y="160" width="500" height="100" rx="5" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="45" y="185" font-family="monospace" font-size="13" fill="#333">function sphereSphere(a, b) {</text>
+  <text x="45" y="205" font-family="monospace" font-size="13" fill="#333">  const d = b.center.clone().sub(a.center);</text>
+  <text x="45" y="225" font-family="monospace" font-size="13" fill="#333">  const dist = d.length();</text>
+  <text x="45" y="245" font-family="monospace" font-size="13" fill="#333">  return dist &lt; (a.radius + b.radius);  // une seule comparaison</text>
+  <text x="45" y="260" font-family="monospace" font-size="13" fill="#333">}</text>
+
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2A8A2A"/>
+    </marker>
+    <marker id="arrowGreenStart" markerWidth="10" markerHeight="10" refX="2" refY="3" orient="auto">
+      <path d="M8,0 L8,6 L0,3 z" fill="#2A8A2A"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#D44"/>
+    </marker>
+    <marker id="arrowRedStart" markerWidth="10" markerHeight="10" refX="2" refY="3" orient="auto">
+      <path d="M8,0 L8,6 L0,3 z" fill="#D44"/>
+    </marker>
+  </defs>
+</svg>

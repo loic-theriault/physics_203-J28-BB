@@ -1,0 +1,46 @@
+<svg width="580" height="320" viewBox="0 0 580 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Test hierarchy: cheapest to most expensive -->
+
+  <!-- Title -->
+  <text x="290" y="25" text-anchor="middle" font-family="serif" font-size="16" fill="#333" font-weight="bold">Hiérarchie des tests Narrow Phase (du moins cher au plus cher)</text>
+
+  <!-- Level 1: Sphere-Sphere -->
+  <rect x="40" y="50" width="500" height="40" rx="5" fill="#4A90D9" fill-opacity="0.1" stroke="#4A90D9" stroke-width="2"/>
+  <text x="60" y="75" font-family="serif" font-size="15" fill="#2A6AB0" font-weight="bold">Sphère vs Sphère</text>
+  <text x="250" y="75" font-family="serif" font-size="14" fill="#444">|c_A - c_B| &lt; r_A + r_B</text>
+  <text x="480" y="75" font-family="serif" font-size="13" fill="#2A8A2A" font-weight="bold">O(1) — 1 test</text>
+
+  <!-- Level 2: AABB-AABB -->
+  <rect x="40" y="100" width="500" height="40" rx="5" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2"/>
+  <text x="60" y="125" font-family="serif" font-size="15" fill="#2A6AB0" font-weight="bold">AABB vs AABB</text>
+  <text x="250" y="125" font-family="serif" font-size="14" fill="#444">6 comparaisons (3 axes × 2)</text>
+  <text x="480" y="125" font-family="serif" font-size="13" fill="#2A8A2A" font-weight="bold">O(1) — 6 tests</text>
+
+  <!-- Level 3: Sphere-AABB -->
+  <rect x="40" y="150" width="500" height="40" rx="5" fill="#E8A838" fill-opacity="0.15" stroke="#E8A838" stroke-width="2"/>
+  <text x="60" y="175" font-family="serif" font-size="15" fill="#B07820" font-weight="bold">Sphère vs AABB</text>
+  <text x="250" y="175" font-family="serif" font-size="14" fill="#444">distance centre → boîte (clamp)</text>
+  <text x="480" y="175" font-family="serif" font-size="13" fill="#2A8A2A" font-weight="bold">O(1) — ~10 ops</text>
+
+  <!-- Level 4: OBB-OBB (SAT) -->
+  <rect x="40" y="200" width="500" height="40" rx="5" fill="#E8A838" fill-opacity="0.2" stroke="#E8A838" stroke-width="2"/>
+  <text x="60" y="225" font-family="serif" font-size="15" fill="#B07820" font-weight="bold">OBB vs OBB (SAT)</text>
+  <text x="250" y="225" font-family="serif" font-size="14" fill="#444">15 axes en 3D (3+3+9 produits)</text>
+  <text x="480" y="225" font-family="serif" font-size="13" fill="#E8A838" font-weight="bold">O(15) tests</text>
+
+  <!-- Level 5: Mesh-Mesh (GJK+EPA) -->
+  <rect x="40" y="250" width="500" height="40" rx="5" fill="#D44" fill-opacity="0.12" stroke="#D44" stroke-width="2"/>
+  <text x="60" y="275" font-family="serif" font-size="15" fill="#A02020" font-weight="bold">Mesh convexe vs Mesh (GJK+EPA)</text>
+  <text x="250" y="275" font-family="serif" font-size="14" fill="#444">simplex itératif dans Minkowski</text>
+  <text x="480" y="275" font-family="serif" font-size="13" fill="#D44" font-weight="bold">O(n) itératif</text>
+
+  <!-- Arrow on left showing cost increase -->
+  <line x1="20" y1="70" x2="20" y2="270" stroke="#888" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <text x="15" y="170" font-family="serif" font-size="12" fill="#888" transform="rotate(-90 15 170)">coût croissant →</text>
+
+  <defs>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

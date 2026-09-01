@@ -1,0 +1,49 @@
+<svg width="580" height="360" viewBox="0 0 580 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- SAT vs GJK Comparison -->
+
+  <!-- SAT side (left) -->
+  <rect x="20" y="20" width="260" height="320" rx="8" fill="#4A90D9" fill-opacity="0.05" stroke="#4A90D9" stroke-width="2"/>
+  <text x="150" y="45" text-anchor="middle" font-family="serif" font-size="18" fill="#2A6AB0" font-weight="bold">SAT</text>
+  <text x="150" y="65" text-anchor="middle" font-family="serif" font-size="12" fill="#666">Separating Axis Theorem</text>
+
+  <!-- Mini illustration -->
+  <polygon points="50,90 110,85 120,130 80,150 45,130" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="2"/>
+  <polygon points="100,100 160,95 170,140 130,160 95,140" fill="#D44" fill-opacity="0.2" stroke="#D44" stroke-width="2"/>
+  <line x1="30" y1="175" x2="200" y2="175" stroke="#2A8A2A" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <line x1="50" y1="175" x2="120" y2="175" stroke="#4A90D9" stroke-width="5"/>
+  <line x1="95" y1="175" x2="170" y2="175" stroke="#D44" stroke-width="5"/>
+
+  <text x="40" y="200" font-family="serif" font-size="13" fill="#333" font-weight="bold">Principe :</text>
+  <text x="40" y="220" font-family="serif" font-size="12" fill="#444">Projeter sur des axes,</text>
+  <text x="40" y="237" font-family="serif" font-size="12" fill="#444">chercher un axe séparateur.</text>
+
+  <text x="40" y="265" font-family="serif" font-size="13" fill="#333" font-weight="bold">Formes :</text>
+  <text x="40" y="283" font-family="serif" font-size="12" fill="#444">Boîtes, polygones convexes.</text>
+
+  <text x="40" y="310" font-family="serif" font-size="13" fill="#333" font-weight="bold">Avantage :</text>
+  <text x="40" y="328" font-family="serif" font-size="12" fill="#2A8A2A">Simple, direct, pas itératif.</text>
+
+  <!-- GJK side (right) -->
+  <rect x="300" y="20" width="260" height="320" rx="8" fill="#E8A838" fill-opacity="0.05" stroke="#E8A838" stroke-width="2"/>
+  <text x="430" y="45" text-anchor="middle" font-family="serif" font-size="18" fill="#B07820" font-weight="bold">GJK</text>
+  <text x="430" y="65" text-anchor="middle" font-family="serif" font-size="12" fill="#666">Gilbert-Johnson-Keerthi</text>
+
+  <!-- Mini illustration -->
+  <polygon points="340,90 470,85 490,140 440,160 350,145" fill="#2A8A2A" fill-opacity="0.1" stroke="#2A8A2A" stroke-width="2"/>
+  <polygon points="380,110 460,105 475,135 420,150 385,135" fill="#2266AA" fill-opacity="0.15" stroke="#2266AA" stroke-width="2"/>
+  <circle cx="420" cy="125" r="4" fill="#D44"/>
+  <text x="425" y="120" font-family="serif" font-size="10" fill="#D44">(0,0)</text>
+
+  <text x="320" y="200" font-family="serif" font-size="13" fill="#333" font-weight="bold">Principe :</text>
+  <text x="320" y="220" font-family="serif" font-size="12" fill="#444">Différence de Minkowski,</text>
+  <text x="320" y="237" font-family="serif" font-size="12" fill="#444">simplex itératif vers l'origine.</text>
+
+  <text x="320" y="265" font-family="serif" font-size="13" fill="#333" font-weight="bold">Formes :</text>
+  <text x="320" y="283" font-family="serif" font-size="12" fill="#444">Tout convexe (capsule, mesh).</text>
+
+  <text x="320" y="310" font-family="serif" font-size="13" fill="#333" font-weight="bold">Avantage :</text>
+  <text x="320" y="328" font-family="serif" font-size="12" fill="#2A8A2A">Universel, + EPA pour le contact.</text>
+
+  <defs>
+  </defs>
+</svg>

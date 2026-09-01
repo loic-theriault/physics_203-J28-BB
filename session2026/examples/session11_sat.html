@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 11 — SAT Visualizer</title>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #info {
+        position: fixed; top: 10px; left: 10px;
+        color: #eee; font-family: 'Courier New', monospace; font-size: 13px;
+        background: rgba(0,0,0,0.65); padding: 14px 18px; border-radius: 10px;
+        pointer-events: none; max-width: 400px; line-height: 1.6; z-index: 10;
+      }
+      #info b { color: #fff; }
+      #legend {
+        position: fixed; bottom: 10px; left: 10px;
+        color: #ccc; font-family: 'Courier New', monospace; font-size: 11px;
+        background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px;
+        pointer-events: none; z-index: 10;
+      }
+      .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.185.1/build/three.module.js",
+          "jsm/": "https://unpkg.com/three@0.185.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="info"></div>
+    <div id="legend">
+      <span class="dot" style="background:#44aaff"></span>Polygon A &nbsp;
+      <span class="dot" style="background:#ff8844"></span>Polygon B &nbsp;
+      <span class="dot" style="background:#ffff00"></span>Current axis &nbsp;
+      <span class="dot" style="background:#00ff00"></span>Gap &nbsp;
+      <span class="dot" style="background:#ff00ff"></span>Overlap &nbsp;
+      <span class="dot" style="background:#00ff88"></span>Contact
+    </div>
+    <script type="module" src="session11_sat.js"></script>
+  </body>
+</html>
