@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 12 — TP Système Solaire</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; }
+        canvas { display: block; }
+        #hud {
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+            color: #00ffcc; font-family: 'Courier New', Courier, monospace;
+            font-size: 24px; text-shadow: 0 0 10px #00ffcc;
+            pointer-events: none; text-align: center;
+        }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.185.1/build/three.module.js",
+            "jsm/": "https://unpkg.com/three@0.185.1/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="hud">An 0, Jour 0</div>
+    <script type="module" src="session12_solar.js"></script>
+</body>
+</html>
